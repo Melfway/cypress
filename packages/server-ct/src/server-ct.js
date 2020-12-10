@@ -6,6 +6,7 @@ const Bluebird = require('bluebird')
 
 const allowDestroy = require('@packages/server/lib/util/server_destroy')
 const templateEngine = require('@packages/server/lib/template_engine')
+const { initializeRoutes } = require('./routes-ct')
 const Socket = require('./socket-ct')
 
 class Server {
@@ -52,7 +53,7 @@ class Server {
   }
 
   createRoutes (...args) {
-    return require('./routes-ct').apply(null, args)
+    return initializeRoutes.apply(null, args)
   }
 
   getHttpServer () {
